@@ -1,0 +1,3 @@
+include ':xmvvm'
+rootProject.name = "XMVVM"
+include ':app'
