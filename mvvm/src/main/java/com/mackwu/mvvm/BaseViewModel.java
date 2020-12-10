@@ -1,4 +1,4 @@
-package com.mackwu.xmvvm;
+package com.mackwu.mvvm;
 
 import androidx.lifecycle.ViewModel;
 
@@ -9,5 +9,7 @@ import androidx.lifecycle.ViewModel;
  * <a href="https://github.com/mackwu828">Follow me</a>
  * ===================================================
  */
-public class BaseViewModel extends ViewModel {
+public class BaseViewModel extends ViewModel{
+
+
 }

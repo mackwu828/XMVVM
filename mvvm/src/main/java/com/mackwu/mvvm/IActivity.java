@@ -1,4 +1,4 @@
-package com.mackwu.xmvvm;
+package com.mackwu.mvvm;
 
 import android.os.Bundle;
 
@@ -14,17 +14,17 @@ import androidx.annotation.Nullable;
 public interface IActivity {
 
     /**
-     * layout id
+     * 获取布局id
      */
     int getLayoutId();
 
     /**
-     * init view
+     * 初始化view
      */
     void initView(@Nullable Bundle savedInstanceState);
 
     /**
-     * init data
+     * 初始化数据
      */
     void initData(@Nullable Bundle savedInstanceState);
 

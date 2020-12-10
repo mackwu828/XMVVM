@@ -2,7 +2,7 @@ package com.mackwu.app;
 
 import android.util.Log;
 
-import com.mackwu.xmvvm.BaseViewModel;
+import com.mackwu.mvvm.BaseViewModel;
 
 public class LoginViewModel extends BaseViewModel {
 

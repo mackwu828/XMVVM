@@ -1,4 +1,4 @@
-package com.mackwu.xmvvm;
+package com.mackwu.mvvm;
 
 import android.content.Context;
 

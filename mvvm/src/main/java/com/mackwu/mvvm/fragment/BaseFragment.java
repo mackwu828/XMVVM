@@ -1,11 +1,16 @@
-package com.mackwu.xmvvm;
+package com.mackwu.mvvm.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.mackwu.mvvm.BaseViewModel;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -13,40 +18,37 @@ import java.lang.reflect.Type;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * ===================================================
- * Created by MackWu on 2020/6/19 23:26
- * <a href="mailto:wumengjiao828@163.com">Contact me</a>
- * <a href="https://github.com/mackwu828">Follow me</a>
- * ===================================================
- */
-public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatActivity implements IActivity {
+public abstract class BaseFragment<VM extends BaseViewModel> extends Fragment implements IFragment {
 
     protected VM viewModel;
     private Unbinder unbinder;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d("TAG", "What activity is created? " + this.getClass().getSimpleName());
-        setContentView(getLayoutId());
-        initUnBinder();
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
+        return inflater.inflate(getLayoutId(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initUnBinder(view);
         initViewModel();
-        initView(savedInstanceState);
+        initView(view, savedInstanceState);
         initData(savedInstanceState);
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (unbinder != null && unbinder != Unbinder.EMPTY) {
             unbinder.unbind();
             unbinder = null;
         }
     }
 
-    private void initUnBinder() {
-        unbinder = ButterKnife.bind(this);
+    private void initUnBinder(View view) {
+        unbinder = ButterKnife.bind(this, view);
     }
 
     @SuppressWarnings("unchecked")

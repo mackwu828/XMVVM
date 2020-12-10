@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.mackwu.xmvvm.BaseActivity;
+import com.mackwu.mvvm.BaseActivity;
 
 public class LoginActivity extends BaseActivity<LoginViewModel> {
 
